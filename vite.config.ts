@@ -10,8 +10,8 @@ export default defineConfig({
     SvelteKitPWA({
       strategies: 'generateSW',
       registerType: 'autoUpdate',
-      scope: '/templeofmars/',
-      base: '/templeofmars/',
+      scope: '/TempleOfMars/',
+      base: '/TempleOfMars/',
       manifest: {
         name: 'Temple of Mars',
         short_name: 'Temple',
@@ -19,8 +19,8 @@ export default defineConfig({
         theme_color: '#c41e3a',
         background_color: '#1a1a2e',
         display: 'standalone',
-        scope: '/templeofmars/',
-        start_url: '/templeofmars/',
+        scope: '/TempleOfMars/',
+        start_url: '/TempleOfMars/',
         icons: [
           {
             src: 'icon.svg',
@@ -31,34 +31,25 @@ export default defineConfig({
         ]
       },
       workbox: {
-        // Canon 0034 — SWs never cache HTML
         globPatterns: ['**/*.{js,css,svg,woff,woff2,json}'],
         globIgnores: ['**/*.html'],
         navigateFallback: null,
         runtimeCaching: [
           {
-            // Codex JSON data — stale-while-revalidate
             urlPattern: /^https:\/\/raw\.githubusercontent\.com\/(?:[Rr]ishabh1804|rishabh1804)\/.*\.(?:json|md)$/,
             handler: 'StaleWhileRevalidate',
             options: {
               cacheName: 'codex-data-cache',
-              expiration: {
-                maxEntries: 50,
-                maxAgeSeconds: 60 * 60 * 24 // 24h
-              },
+              expiration: { maxEntries: 50, maxAgeSeconds: 60 * 60 * 24 },
               cacheableResponse: { statuses: [0, 200] }
             }
           },
           {
-            // Google Fonts
             urlPattern: /^https:\/\/fonts\.(googleapis|gstatic)\.com\/.*/,
             handler: 'CacheFirst',
             options: {
               cacheName: 'google-fonts-cache',
-              expiration: {
-                maxEntries: 30,
-                maxAgeSeconds: 60 * 60 * 24 * 365
-              },
+              expiration: { maxEntries: 30, maxAgeSeconds: 60 * 60 * 24 * 365 },
               cacheableResponse: { statuses: [0, 200] }
             }
           }
