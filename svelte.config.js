@@ -15,7 +15,7 @@ const config = {
       strict: true
     }),
     paths: {
-      base: dev ? '' : '/templeofmars'
+      base: dev ? '' : '/TempleOfMars'
     },
     prerender: {
       handleHttpError: 'warn'
