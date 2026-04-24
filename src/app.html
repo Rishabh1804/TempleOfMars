@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%sveltekit.assets%/favicon.svg" type="image/svg+xml" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#c41e3a" />
+    <meta name="description" content="Watchtower of the Order. Sister Monument to the Command Center." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Work+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      // Prevent theme flash — read stored preference before paint
+      (function () {
+        try {
+          const stored = localStorage.getItem('templeofmars-theme');
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const isDark = stored ? stored === 'dark' : prefersDark;
+          if (isDark) document.documentElement.classList.add('dark');
+          const fs = localStorage.getItem('templeofmars-fs-base');
+          if (fs) document.documentElement.style.setProperty('--fs-base', fs);
+        } catch (_) {}
+      })();
+    </script>
+    %sveltekit.head%
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents">%sveltekit.body%</div>
+  </body>
+</html>

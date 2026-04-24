@@ -1,0 +1,77 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-display: 'Playfair Display', ui-serif, Georgia, serif;
+  --font-sans: 'Work Sans', ui-sans-serif, system-ui, sans-serif;
+
+  --color-mars-red: #c41e3a;
+  --color-mars-cyan: #00d4ff;
+  --color-mars-dark: #1a1a2e;
+  --color-mars-navy: #16213e;
+
+  --color-province-sproutlab: #ff6b6b;
+  --color-province-dashboard: #4ecdc4;
+  --color-province-invoicing: #ffd93d;
+
+  --color-bg: #f7f6f2;
+  --color-bg-elev: #ffffff;
+  --color-fg: #1a1a2e;
+  --color-fg-muted: #4a4a5a;
+  --color-border: #e2e0d8;
+
+  --color-bg-dark: #0f1020;
+  --color-bg-elev-dark: #1a1a2e;
+  --color-fg-dark: #e0e0e0;
+  --color-fg-muted-dark: #b0b0b0;
+  --color-border-dark: #2a2a3e;
+}
+
+:root {
+  --fs-base: 14px;
+}
+
+html {
+  font-size: var(--fs-base);
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-fg);
+}
+
+html.dark {
+  background: linear-gradient(135deg, var(--color-bg-dark) 0%, var(--color-bg-elev-dark) 100%);
+  color: var(--color-fg-dark);
+  min-height: 100vh;
+}
+
+body {
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+/* Scrollbar — keep the archive feel */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: var(--color-border-dark);
+}
+
+/* Selection */
+::selection {
+  background: var(--color-mars-red);
+  color: white;
+}
